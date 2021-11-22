@@ -1,0 +1,30 @@
+sudo apt-get update
+sudo apt install xfce4 xfce4-goodies tightvncserver -y
+vncserver
+Imnotemo12
+vncserver -kill :1
+mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
+nano ~/.vnc/xstartup
+
+
+ #!/bin/bash
+ xrdb $HOME/.Xresources
+ startxfce4 &
+ 
+ sudo chmod +x ~/.vnc/xstartup
+ vncserver
+ sudo apt install firefox -y
+ git clone https://github.com/nikura12/lyka112
+ cd lyka112
+ sudo dpkg -i uam-latest_amd64.deb
+ 
+ snap install upnp-server
+ 
+FROM debian:buster-slim
+RUN cd /tmp && \
+apt update && \
+apt full-upgrade -y && \
+apt install wget libglib2.0-0 netbase -y && \
+wget https://update.u.is/downloads/uam/linux/uam-latest_amd64.deb && \
+dpkg -i /tmp/uam-latest_amd64.deb
+CMD /opt/uam/uam --pk E323D48E357DD1C7DD5F463072FC885B7FFE0F0BBECAC37A50D474BDDDF4D639 --no-ui
